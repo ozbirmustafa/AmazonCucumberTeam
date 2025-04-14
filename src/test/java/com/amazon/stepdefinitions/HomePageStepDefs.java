@@ -13,8 +13,9 @@ public class HomePageStepDefs {
 
     @Given("User is on the Amazon homepage")
     public void user_is_on_the_amazon_homepage() {
-//        Driver.getDriver().navigate().to("https://www.amazon.com/");
+        // This step is already handled in the Before hook
     }
+
     @Given("User should see the page title as {string}")
     public void user_should_see_the_page_title_as(String title) {
         Assert.assertTrue("Title does not contain expected text: " + title,
