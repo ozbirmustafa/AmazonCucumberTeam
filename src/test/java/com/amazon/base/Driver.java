@@ -23,6 +23,7 @@ public class Driver {
 
             switch (browser) {
                 case "chrome":
+                    System.setProperty("webdriver.chrome.driver", "/opt/homebrew/bin/chromedriver");
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.addArguments("--disable-notifications");
