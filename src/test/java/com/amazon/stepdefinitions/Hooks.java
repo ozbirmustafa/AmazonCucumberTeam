@@ -7,7 +7,6 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Hooks {
     public static WebDriver driver;
