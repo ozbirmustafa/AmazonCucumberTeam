@@ -15,8 +15,11 @@ public class Hooks {
     public void setUp() {
         driver = Driver.getDriver();
         driver.get(ConfigReader.get("baseURL"));
-        driver.navigate().refresh();
-        driver.navigate().refresh();
+        try {
+            WebDriverUtils.waitForElementToBeClickable(By.partialLinkText("Try different image"),10).click();
+        } catch (Exception e) {
+            System.out.println("Try image button not found");
+        }
         try {
             WebDriverUtils.waitForElementToBeClickable(By.cssSelector("span.a-button-inner input.a-button-input"),10).click();
         } catch (Exception e) {
