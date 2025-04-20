@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
-import java.time.Duration;
 
 public class Driver {
 
@@ -23,7 +22,6 @@ public class Driver {
 
             switch (browser) {
                 case "chrome":
-                    System.setProperty("webdriver.chrome.driver", "/opt/homebrew/bin/chromedriver");
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.addArguments("--disable-notifications");
