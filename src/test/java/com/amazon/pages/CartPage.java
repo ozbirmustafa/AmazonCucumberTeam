@@ -21,5 +21,13 @@ public class CartPage {
     @FindBy(xpath = "//a[@id='a-autoid-0-announce']")
     public WebElement signIntoYorAccountButton;
 
+    @FindBy(xpath = "//h1[contains(text(),'Sign in or create account')]")
+    public WebElement signInOrCreateAccountHeading;
+
+    @FindBy(xpath = "//span[@id='continue']")
+    public WebElement continueButton;
+
+    @FindBy(xpath = "//form[@id='ap_login_form']")
+    public WebElement signInForm;
 
 }

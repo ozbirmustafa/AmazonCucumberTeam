@@ -42,5 +42,23 @@ public class CartPageStepDefs {
     }
 
 
+    @Then("User should see {string} heading")
+    public void userShouldSeeHeading(String arg0) {
+        String expectedHeading = "Sign in or create account";
+        String actualHeading = cartPage.signInOrCreateAccountHeading.getText();
+        Assert.assertEquals("User is not redirected to the sign-in page", expectedHeading, actualHeading);
+        
+    }
+
+    @When("User clicks on the Continue button without entering credentials")
+    public void userClicksOnTheContinueButtonWithoutEnteringCredentials() {
+        cartPage.continueButton.click();
+    }
+
+    @Then("User should see the warning message {string}")
+    public void userShouldSeeTheWarningMessage(String expectedMessage) {
+        String actualMessage = cartPage.signInForm.getText();
+        Assert.assertTrue("Warning message is not displayed as expected", actualMessage.contains(expectedMessage));
+    }
 }
 
