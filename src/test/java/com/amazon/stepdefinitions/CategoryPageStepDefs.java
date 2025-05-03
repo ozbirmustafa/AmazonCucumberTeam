@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
 
 import static com.amazon.utilities.WebDriverUtils.waitForElementToBeClickable;
 
@@ -37,20 +38,30 @@ public class CategoryPageStepDefs {
     }
 
     @When("Click All menu button")
-    public void clickAllMenuButton() throws InterruptedException {
+    public void clickAllMenuButton()  {
         categoryPage.allMenuButton.click();
         //TODO --> change with explicit wait
-        WebDriverUtils.wait(2);
+        WebDriverUtils.wait(5);
     }
 
     @Then("The main menu heading {string} should be displayed")
     public void theMainMenuHeadingShouldBeDisplayed(String mainMenuHeading)  {
-      Assert.assertTrue(categoryPage.mainMenuHeadings(mainMenuHeading).isDisplayed());
+        Assert.assertTrue(categoryPage.mainMenuHeadings(mainMenuHeading).isDisplayed());
     }
 
     @Then("{string} subcategory should be displayed")
     public void subcategoryShouldBeDisplayed(String subcategory)  {
-    Assert.assertTrue(categoryPage.dcSubcategories(subcategory).isDisplayed());
+    Assert.assertTrue(categoryPage.digitalContentDevicesSubCategories(subcategory).isDisplayed());
+    }
 
+
+    @Then("Default visible subcategories count should be {int}")
+    public void defaultVisibleSubcategoriesCountShouldBe(int visibleSubCount) {
+    Assert.assertEquals(categoryPage.shopByDepartmentVisibleSubHeadsList.size(),visibleSubCount);
+    }
+
+    @Then("{string} visible subcategory should be displayed")
+    public void visibleSubcategoryShouldBeDisplayed(String visibleSubcategory) {
+        Assert.assertTrue(categoryPage.ShopByDepartmentVisibleSubCategories(visibleSubcategory).isDisplayed());
     }
 }
