@@ -22,7 +22,7 @@ Feature: Category Page
       | Programs & Features       |
       | Help & Settings           |
 
-  @CP
+
   Scenario Outline:  Validate the subcategories under 'Digital Content & Devices'
     When Click All menu button
     Then "<subcategory>" subcategory should be displayed
@@ -34,6 +34,20 @@ Feature: Category Page
       | Amazon Appstore          |
 
 
+  Scenario: Verify default visible subcategories count 4 under 'Shop by Department'
+    When Click All menu button
+    Then Default visible subcategories count should be 4
+
+  @CP
+  Scenario Outline: Verify default visible subcategories under 'Shop by Department'
+    When Click All menu button
+    Then "<visibleSubcategory>" visible subcategory should be displayed
+    Examples:
+      | visibleSubcategory |
+      | Electronics        |
+      | Computers          |
+      | Smart Home         |
+      | Arts & Crafts      |
 
 
 
