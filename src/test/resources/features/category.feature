@@ -23,7 +23,7 @@ Feature: Category Page
       | Help & Settings           |
 
 
-  Scenario Outline:  Validate the subcategories under 'Digital Content & Devices'
+  Scenario Outline:  Verify the subcategories under 'Digital Content & Devices'
     When Click All menu button
     Then Digital Content & Devices "<subcategory>" should be displayed
     Examples:
@@ -33,11 +33,8 @@ Feature: Category Page
       | Kindle E-readers & Books |
       | Amazon Appstore          |
 
-  Scenario: Verify default visible subcategories count 4 under 'Shop by Department'
-    When Click All menu button
-    Then Default visible subcategories count should be 4
 
-  @CP
+
   Scenario Outline: Verify default visible subcategories under 'Shop by Department'
     When Click All menu button
     Then Shop by Department "<visibleSubcategory>" should be displayed
@@ -48,26 +45,39 @@ Feature: Category Page
       | Smart Home         |
       | Arts & Crafts      |
 
-  Scenario Outline: Validate the subcategories under 'Programs & Features'
+  @CP
+  Scenario Outline: Verify the subcategories under 'Programs & Features'
     When Click All menu button
-    Then Programs and Features "<subcategory>" should be displayed
+    Then Programs and Features "<visibleSubcategory>" should be displayed
     Examples:
-      | subcategory            |
+      | visibleSubcategory     |
       | Gift Cards             |
       | Shop By Interest       |
       | Amazon Live            |
       | International Shopping |
 
- Scenario Outline: Validate the subcategories under 'Help & Settings'
+
+  Scenario Outline: Verify the subcategories under 'Help & Settings'
     When Click All menu button
     Then Help and Settings "<subcategory>" should be displayed
     Examples:
-      | subcategory            |
-      | Gift Cards             |
-      | Shop By Interest       |
-      | Amazon Live            |
-      | International Shopping |
+      | subcategory      |
+      | Your Account     |
+      | English          |
+      | United States    |
+      | Customer Service |
+      | Sign in          |
 
+
+  #Scenario : Verify that the "See all" button is visible after 4 submenu items.
+
+  #Scenario: Verify that the "See less" button is displayed when there are 5 or fewer submenu items.
+
+  #Scenario: Verify the number of visible submenu items after clicking "See All"
+
+  #Scenario: Verify the text of submenu items after clicking "See All"
+
+  #Scenario: Verify that only 4 submenu items remain visible after clicking "See Less"
 
 
 

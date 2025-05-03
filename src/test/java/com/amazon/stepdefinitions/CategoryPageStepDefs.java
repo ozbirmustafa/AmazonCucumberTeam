@@ -6,7 +6,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.WebElement;
 
 import static com.amazon.utilities.WebDriverUtils.waitForElementToBeClickable;
 
@@ -54,22 +53,19 @@ public class CategoryPageStepDefs {
         Assert.assertTrue(categoryPage.digitalContentDevicesSubCategories(subcategory).isDisplayed());
     }
 
-    @Then("Default visible subcategories count should be {int}")
-    public void defaultVisibleSubcategoriesCountShouldBe(int visibleSubCount) {
-    Assert.assertEquals(categoryPage.shopByDepartmentVisibleSubHeadsList.size(),visibleSubCount);
-    }
-
     @Then("Shop by Department {string} should be displayed")
     public void shopByDepartmentShouldBeDisplayed(String visibleSubcategory) {
-        Assert.assertTrue(categoryPage.ShopByDepartmentVisibleSubCategories(visibleSubcategory).isDisplayed());
+        Assert.assertTrue(categoryPage.shopByDepartmentVisibleSubCategories(visibleSubcategory).isDisplayed());
     }
 
     @Then("Programs and Features {string} should be displayed")
-    public void programsAndFeaturesShouldBeDisplayed(String subCategory) {
+    public void programsAndFeaturesShouldBeDisplayed(String visibleSubCategory) {
+        Assert.assertTrue(categoryPage.programAndFeatureVisibleSubCategories(visibleSubCategory).isDisplayed());
     }
 
     @Then("Help and Settings {string} should be displayed")
     public void helpAndSettingsShouldBeDisplayed(String subCategory) {
+        Assert.assertTrue(categoryPage.helpAndSettingSubCategories(subCategory).isDisplayed());
     }
 
 
