@@ -25,14 +25,13 @@ Feature: Category Page
 
   Scenario Outline:  Validate the subcategories under 'Digital Content & Devices'
     When Click All menu button
-    Then "<subcategory>" subcategory should be displayed
+    Then Digital Content & Devices "<subcategory>" should be displayed
     Examples:
       | subcategory              |
       | Prime Video              |
       | Amazon Music             |
       | Kindle E-readers & Books |
       | Amazon Appstore          |
-
 
   Scenario: Verify default visible subcategories count 4 under 'Shop by Department'
     When Click All menu button
@@ -41,7 +40,7 @@ Feature: Category Page
   @CP
   Scenario Outline: Verify default visible subcategories under 'Shop by Department'
     When Click All menu button
-    Then "<visibleSubcategory>" visible subcategory should be displayed
+    Then Shop by Department "<visibleSubcategory>" should be displayed
     Examples:
       | visibleSubcategory |
       | Electronics        |
@@ -49,10 +48,25 @@ Feature: Category Page
       | Smart Home         |
       | Arts & Crafts      |
 
+  Scenario Outline: Validate the subcategories under 'Programs & Features'
+    When Click All menu button
+    Then Programs and Features "<subcategory>" should be displayed
+    Examples:
+      | subcategory            |
+      | Gift Cards             |
+      | Shop By Interest       |
+      | Amazon Live            |
+      | International Shopping |
 
-
-
-
+ Scenario Outline: Validate the subcategories under 'Help & Settings'
+    When Click All menu button
+    Then Help and Settings "<subcategory>" should be displayed
+    Examples:
+      | subcategory            |
+      | Gift Cards             |
+      | Shop By Interest       |
+      | Amazon Live            |
+      | International Shopping |
 
 
 

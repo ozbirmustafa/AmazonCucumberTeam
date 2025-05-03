@@ -49,19 +49,29 @@ public class CategoryPageStepDefs {
         Assert.assertTrue(categoryPage.mainMenuHeadings(mainMenuHeading).isDisplayed());
     }
 
-    @Then("{string} subcategory should be displayed")
-    public void subcategoryShouldBeDisplayed(String subcategory)  {
-    Assert.assertTrue(categoryPage.digitalContentDevicesSubCategories(subcategory).isDisplayed());
+    @Then("Digital Content & Devices {string} should be displayed")
+    public void digitalContentDevicesShouldBeDisplayed(String subcategory) {
+        Assert.assertTrue(categoryPage.digitalContentDevicesSubCategories(subcategory).isDisplayed());
     }
-
 
     @Then("Default visible subcategories count should be {int}")
     public void defaultVisibleSubcategoriesCountShouldBe(int visibleSubCount) {
     Assert.assertEquals(categoryPage.shopByDepartmentVisibleSubHeadsList.size(),visibleSubCount);
     }
 
-    @Then("{string} visible subcategory should be displayed")
-    public void visibleSubcategoryShouldBeDisplayed(String visibleSubcategory) {
+    @Then("Shop by Department {string} should be displayed")
+    public void shopByDepartmentShouldBeDisplayed(String visibleSubcategory) {
         Assert.assertTrue(categoryPage.ShopByDepartmentVisibleSubCategories(visibleSubcategory).isDisplayed());
     }
+
+    @Then("Programs and Features {string} should be displayed")
+    public void programsAndFeaturesShouldBeDisplayed(String subCategory) {
+    }
+
+    @Then("Help and Settings {string} should be displayed")
+    public void helpAndSettingsShouldBeDisplayed(String subCategory) {
+    }
+
+
+
 }
