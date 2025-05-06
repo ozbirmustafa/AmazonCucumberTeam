@@ -2,6 +2,7 @@ package com.amazon.stepdefinitions;
 
 import com.amazon.pages.CategoryPage;
 import com.amazon.utilities.WebDriverUtils;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -66,6 +67,39 @@ public class CategoryPageStepDefs {
     @Then("Help and Settings {string} should be displayed")
     public void helpAndSettingsShouldBeDisplayed(String subCategory) {
         Assert.assertTrue(categoryPage.helpAndSettingSubCategories(subCategory).isDisplayed());
+    }
+
+
+    @Then("Shop By Department's See all button should displayed")
+    public void shopByDepartmentSSeeAllButtonShouldDisplayed() {
+        Assert.assertTrue(categoryPage.seeAllButtons(0).isDisplayed());
+    }
+
+    @And("Click Shop By Department's See all button")
+    public void clickShopByDepartmentSSeeAllButton() {
+        categoryPage.seeAllButtons(0).click();
+        WebDriverUtils.wait(3);
+    }
+
+    @Then("Shop By Department's See less button should displayed")
+    public void shopByDepartmentSSeeLessButtonShouldDisplayed() {
+        Assert.assertTrue(categoryPage.seeLessButtons(0).isDisplayed());
+    }
+
+    @Then("Programs & Feature's See all button should displayed")
+    public void programsFeatureSSeeAllButtonShouldDisplayed() {
+        Assert.assertTrue(categoryPage.seeAllButtons(1).isDisplayed());
+    }
+
+    @Then("Programs & Feature's See less button should displayed")
+    public void programsFeatureSSeeLessButtonShouldDisplayed() {
+        Assert.assertTrue(categoryPage.seeLessButtons(1).isDisplayed());
+    };
+
+    @And("Click Programs & Feature's See all button")
+    public void clickProgramsFeatureSSeeAllButton() {
+        categoryPage.seeAllButtons(1).click();
+        WebDriverUtils.wait(3);
     }
 
 
