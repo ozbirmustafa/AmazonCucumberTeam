@@ -34,7 +34,6 @@ Feature: Category Page
       | Amazon Appstore          |
 
 
-
   Scenario Outline: Verify default visible subcategories under 'Shop by Department'
     When Click All menu button
     Then Shop by Department "<visibleSubcategory>" should be displayed
@@ -45,7 +44,7 @@ Feature: Category Page
       | Smart Home         |
       | Arts & Crafts      |
 
-  @CP
+
   Scenario Outline: Verify the subcategories under 'Programs & Features'
     When Click All menu button
     Then Programs and Features "<visibleSubcategory>" should be displayed
@@ -68,16 +67,29 @@ Feature: Category Page
       | Customer Service |
       | Sign in          |
 
+  @CP
+  Scenario: Verify that the "See all" button is visible after Shop By Departments submenu items.
+    When Click All menu button
+    Then Shop By Department's See all button should displayed
 
-  #Scenario : Verify that the "See all" button is visible after 4 submenu items.
+  # @CP
+  # Scenario: Verify that the "See less" button is displayed after clicking "See all" button  under Shop By Departments submenu items
+  #  When Click All menu button
+  #  And Click Shop By Department's See all button
+  #  Then Shop By Department's See less button should displayed
 
-  #Scenario: Verify that the "See less" button is displayed when there are 5 or fewer submenu items.
+  @CP
+  Scenario: Verify that the "See all" button is visible after Programs & Features submenu items
+    When Click All menu button
+    Then Programs & Feature's See all button should displayed
 
-  #Scenario: Verify the number of visible submenu items after clicking "See All"
+ # @CP
+ # Scenario: Verify that the "See less" button is displayed after clicking "See all" button  under Programs & Features submenu items
+ #  When Click All menu button
+ #  And Click Programs & Feature's See all button
+ #  Then Programs & Feature's See less button should displayed
 
-  #Scenario: Verify the text of submenu items after clicking "See All"
 
-  #Scenario: Verify that only 4 submenu items remain visible after clicking "See Less"
 
 
 

@@ -5,6 +5,7 @@ import com.amazon.utilities.WebDriverUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.List;
 
 import static com.amazon.stepdefinitions.Hooks.driver;
@@ -35,6 +36,12 @@ public class CategoryPage {
 
     @FindBy(xpath = "//a[text()='Shop By Interest']")
     public WebElement shopByInterest;
+
+    @FindBy(xpath = "//a[@aria-label='See all']")
+    public List<WebElement> seeAllButton;
+
+    @FindBy(xpath = "//a[@aria-label='See less']")
+    public List<WebElement> seeLessButton;
 
 
     // Digital Content & Devices , Shop by Department , Programs & Features , Help & Settings
@@ -128,5 +135,27 @@ public class CategoryPage {
             }
         }
         return subcategory;
+    }
+
+    public WebElement seeAllButtons(int index) {
+        WebElement w = null;
+        for (int i = 0; i < seeAllButton.size(); i++) {
+            if (i == index) {
+                w = seeAllButton.get(index);
+            }
+        }
+        return w;
+    }
+
+
+    public WebElement seeLessButtons(int index) {
+        WebElement w = null;
+        for (int i = 0; i < seeLessButton.size(); i++) {
+            if (i == index) {
+                w = seeAllButton.get(index);
+                break;
+            }
+        }
+        return w;
     }
 }
