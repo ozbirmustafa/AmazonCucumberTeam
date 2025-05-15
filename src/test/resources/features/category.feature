@@ -1,4 +1,5 @@
 @CPall
+# This feature tests Amazon's All menu including categories and subcategories under each section
 Feature: Category Page
 
 
@@ -67,27 +68,56 @@ Feature: Category Page
       | Customer Service |
       | Sign in          |
 
-  @CP
-  Scenario: Verify that the "See all" button is visible after Shop By Departments submenu items.
+
+  Scenario: Verify that the "See all" button after the Shop by Department submenu items is visible.
     When Click All menu button
     Then Shop By Department's See all button should displayed
 
-  # @CP
-  # Scenario: Verify that the "See less" button is displayed after clicking "See all" button  under Shop By Departments submenu items
-  #  When Click All menu button
-  #  And Click Shop By Department's See all button
-  #  Then Shop By Department's See less button should displayed
+ # @CP
+ # Scenario: Verify that the "See less" button is displayed after clicking "See all" button  under Shop By Departments submenu items
+ #   When Click All menu button
+ #   And Click Shop By Department's See all button
+ #   Then Shop By Department's See less button should displayed
 
-  @CP
-  Scenario: Verify that the "See all" button is visible after Programs & Features submenu items
+
+  Scenario: Verify that the "See all" button after Programs & Features submenu items is visible
     When Click All menu button
     Then Programs & Feature's See all button should displayed
 
  # @CP
- # Scenario: Verify that the "See less" button is displayed after clicking "See all" button  under Programs & Features submenu items
+ # Scenario: Verify that the "See less" button is displayed after clicking the "See more" button under the Programs & Feature submenu items
  #  When Click All menu button
  #  And Click Programs & Feature's See all button
  #  Then Programs & Feature's See less button should displayed
+
+
+  Scenario Outline: Verify that subcategories under 'Prime Video'
+    Given Click All menu button
+    When Click "Prime Video"
+    Then Prime Video "<subcategories>" should be displayed
+    Examples:
+      | subcategories        |
+      | All Videos           |
+      | Included with Prime  |
+      | Prime Video Channels |
+      | Rent or Buy          |
+      | Your Watchlist       |
+      | Purchases & Rentals  |
+      | Watch Anywhere       |
+      | Getting Started      |
+
+  @c
+  Scenario Outline: Verify that subcategories under 'Amazon Music'
+    Given Click All menu button
+    When Click "Amazon Music"
+    Then Amazon Music "<subcategories>" should be displayed
+    Examples:
+      | subcategories          |
+      | Amazon Music Unlimited |
+      | Free Streaming Music   |
+      | Podcasts               |
+      | Open Web Player        |
+      | Download the app       |
 
 
 

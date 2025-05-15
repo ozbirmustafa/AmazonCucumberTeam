@@ -1,7 +1,9 @@
 package com.amazon.pages;
 
 
+import com.amazon.base.Driver;
 import com.amazon.utilities.WebDriverUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -43,10 +45,17 @@ public class CategoryPage {
     @FindBy(xpath = "//a[@aria-label='See less']")
     public List<WebElement> seeLessButton;
 
+    @FindBy(xpath = "//ul[@data-menu-id='2']//a[@class='hmenu-item']")
+    public List<WebElement> primeVideoSubLists;
+
+    @FindBy(xpath = "//ul[@data-menu-id='3']//a[@class='hmenu-item']")
+    public  List<WebElement> amazonMusicSubLists;
+
 
     // Digital Content & Devices , Shop by Department , Programs & Features , Help & Settings
     // The method of accessing the main menu headings with text as a web element
     public WebElement mainMenuHeadings(String headingText) {
+        // TODO --> NullPointerException atabılır handle et
         WebElement heading = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(2);
@@ -61,10 +70,11 @@ public class CategoryPage {
         return heading;
     }
 
-
+// ==========================================================================================================
     // Prime Video , Amazon Music , Kindle E-readers & Books , Amazon Appstore
     // The method of accessing the subheadings of Digital Content & Devices with text as a web element
     public WebElement digitalContentDevicesSubCategories(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
         WebElement subcategory = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(5);
@@ -79,9 +89,67 @@ public class CategoryPage {
         return subcategory;
     }
 
+
+    // Prime Video , Amazon Music , Kindle E-readers & Books , Amazon Appstore
+    // The method of clicking the subheadings of Digital Content & Devices with text as a web element
+    public void digitalContentDevicesSubCategoriesClick(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
+        WebElement subcategory = null;
+        // TODO --> change Explicit wait
+        WebDriverUtils.wait(5);
+        for (WebElement w : digitalContentDevicesSubHeadsList) {
+            if (w.getText().equals(subcategoryText)) {
+                w.click();
+                //TODO --> USE LOGGING
+                System.out.println(w.getText());
+                break;
+            }
+        }
+    }
+
+    // All Videos , Included with Prime , Prime Video Channels , Rent or Buy , Your Watchlist , Purchases & Rentals , Watch Anywhere , Getting Started
+    // The method of accessing the subheadings of Prime Video with text as a web element
+    public WebElement primeVideoSubCategories(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
+        WebElement subcategory = null;
+        // TODO --> change Explicit wait
+        WebDriverUtils.wait(5);
+        for (WebElement w : primeVideoSubLists) {
+            if (w.getText().equals(subcategoryText)) {
+                subcategory = w;
+                //TODO --> USE LOGGING
+                System.out.println(w.getText());
+                break;
+            }
+        }
+        return subcategory;
+    }
+
+    // Amazon Music Unlimited , Free Streaming Music , Podcasts , Open Web Player , Download hte app
+    // The method of accessing the subheadings of Amazon Music with text as a web element
+    public WebElement amazonMusicSubCategories(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
+        WebElement subcategory = null;
+        // TODO --> change Explicit wait
+        WebDriverUtils.wait(5);
+        for (WebElement w :amazonMusicSubLists) {
+            if (w.getText().equals(subcategoryText)) {
+                subcategory = w;
+                //TODO --> USE LOGGING
+                System.out.println(w.getText());
+                break;
+            }
+        }
+        return subcategory;
+    }
+
+
+// ==========================================================================================================
+
     // Electronics , Computers , Smart Home , Arts & Crafts
     // The method of accessing the subheadings of Shop By Departments with text as a web element
     public WebElement shopByDepartmentVisibleSubCategories(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
         WebElement visibleSubcategory = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(2);
@@ -100,6 +168,7 @@ public class CategoryPage {
     // Gift Cards , Shop By Interest , Amazon Live , International Shopping
     // The method of accessing the subheadings of Programs & Features with text as a web element
     public WebElement programAndFeatureVisibleSubCategories(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
         WebElement visibleSubcategory = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(2);
@@ -123,6 +192,7 @@ public class CategoryPage {
     // Your Account , English , United States , Customer Service , Sign in
     // The method of accessing the subheadings of Helps & Settings with text as a web element
     public WebElement helpAndSettingSubCategories(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
         WebElement subcategory = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(5);
@@ -158,4 +228,11 @@ public class CategoryPage {
         }
         return w;
     }
+
+    public void scrollToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+
 }
