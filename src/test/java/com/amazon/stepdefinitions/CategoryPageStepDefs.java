@@ -1,5 +1,6 @@
 package com.amazon.stepdefinitions;
 
+import com.amazon.base.Driver;
 import com.amazon.pages.CategoryPage;
 import com.amazon.utilities.WebDriverUtils;
 import io.cucumber.java.en.And;
@@ -7,6 +8,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static com.amazon.utilities.WebDriverUtils.waitForElementToBeClickable;
 
@@ -75,12 +82,6 @@ public class CategoryPageStepDefs {
         Assert.assertTrue(categoryPage.seeAllButtons(0).isDisplayed());
     }
 
-    @And("Click Shop By Department's See all button")
-    public void clickShopByDepartmentSSeeAllButton() {
-        categoryPage.seeAllButtons(0).click();
-        WebDriverUtils.wait(3);
-    }
-
     @Then("Shop By Department's See less button should displayed")
     public void shopByDepartmentSSeeLessButtonShouldDisplayed() {
         Assert.assertTrue(categoryPage.seeLessButtons(0).isDisplayed());
@@ -103,5 +104,35 @@ public class CategoryPageStepDefs {
     }
 
 
+    @And("Click Shop By Department's See all button")
+    public void clickShopByDepartmentSSeeAllButton() {
+        categoryPage.seeAllButtons(0).click();
 
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebElement seeLessButton = categoryPage.seeLessButtons(0);
+
+        wait.until(ExpectedConditions.visibilityOf(seeLessButton));
+
+        // Eğer element scroll dışında görünmüyorsa scroll yap
+        categoryPage.scrollToElement(seeLessButton);
+
+        // Üzerine mouse götür
+        Actions action = new Actions(Driver.getDriver());
+        action.moveToElement(categoryPage.seeLessButtons(0)).perform();
+    }
+
+    @When("Click {string}")
+    public void click(String categoryName) {
+        categoryPage.digitalContentDevicesSubCategoriesClick(categoryName);
+    }
+
+    @Then("Prime Video {string} should be displayed")
+    public void primeVideoShouldBeDisplayed(String subcategories) {
+        Assert.assertTrue(categoryPage.primeVideoSubCategories(subcategories).isDisplayed());
+    }
+
+    @Then("Amazon Music {string} should be displayed")
+    public void amazonMusicShouldBeDisplayed(String subcategories) {
+        Assert.assertTrue(categoryPage.amazonMusicSubCategories(subcategories).isDisplayed());
+    }
 }
