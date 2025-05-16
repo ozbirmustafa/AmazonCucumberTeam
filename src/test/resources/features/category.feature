@@ -106,7 +106,7 @@ Feature: Category Page
       | Watch Anywhere       |
       | Getting Started      |
 
-  @c
+
   Scenario Outline: Verify that subcategories under 'Amazon Music'
     Given Click All menu button
     When Click "Amazon Music"
@@ -118,6 +118,39 @@ Feature: Category Page
       | Podcasts               |
       | Open Web Player        |
       | Download the app       |
+
+
+  Scenario Outline: Verify that subcategories under 'Kindle E-readers & Books'
+    Given Click All menu button
+    When Click "Kindle E-readers & Books"
+    Then Kindle E-readers & Books "<subheaders>" should be displayed
+    Examples:
+      | subheaders       |
+      | Kindle E-readers |
+      | Kindle Store     |
+      | Apps & Resources |
+
+  @c
+  Scenario Outline: Verify that subcategories under 'Kindle E-readers & Books'
+    Given Click All menu button
+    When Click "Kindle E-readers & Books"
+    Then Kindle E-readers & Books "<subheader>" and "<subcategory>" should be displayed
+    Examples:
+      | subheader        | subcategory                                    |
+      | Kindle E-readers | Meet the Kindle family                         |
+      | Kindle E-readers | New Kindle                                     |
+      | Kindle E-readers | New Kindle Kids                                |
+      | Kindle E-readers | All-new Kindle Paperwhite                      |
+      | Kindle E-readers | All-new Kindle Paperwhite Kids                 |
+      | Kindle E-readers | Introducing Kindle Colorsoft Signature Edition |
+      | Kindle E-readers | New Kindle Scribe                              |
+      | Kindle Store     | Kindle Books                                   |
+      | Kindle Store     | Kindle Unlimited                               |
+      | Kindle Store     | Prime Reading                                  |
+      | Apps & Resources | Free Kindle Reading Apps                       |
+      | Apps & Resources | Kindle for Web                                 |
+      | Apps & Resources | Manage Your Content and Devices                |
+      | Apps & Resources | Trade-In                                       |
 
 
 

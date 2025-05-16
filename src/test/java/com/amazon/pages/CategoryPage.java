@@ -49,7 +49,13 @@ public class CategoryPage {
     public List<WebElement> primeVideoSubLists;
 
     @FindBy(xpath = "//ul[@data-menu-id='3']//a[@class='hmenu-item']")
-    public  List<WebElement> amazonMusicSubLists;
+    public List<WebElement> amazonMusicSubLists;
+
+    @FindBy(xpath = "//ul[@data-menu-id='4']//div[@role='heading']")
+    public List<WebElement> kindleEreadersBooksHeaders;
+
+    @FindBy(xpath = "//ul[@data-menu-id='4']//a[@class='hmenu-item']")
+    public List<WebElement> kindleEreadersBooksSubcategories;
 
 
     // Digital Content & Devices , Shop by Department , Programs & Features , Help & Settings
@@ -70,7 +76,7 @@ public class CategoryPage {
         return heading;
     }
 
-// ==========================================================================================================
+    // ==========================================================================================================
     // Prime Video , Amazon Music , Kindle E-readers & Books , Amazon Appstore
     // The method of accessing the subheadings of Digital Content & Devices with text as a web element
     public WebElement digitalContentDevicesSubCategories(String subcategoryText) {
@@ -93,8 +99,6 @@ public class CategoryPage {
     // Prime Video , Amazon Music , Kindle E-readers & Books , Amazon Appstore
     // The method of clicking the subheadings of Digital Content & Devices with text as a web element
     public void digitalContentDevicesSubCategoriesClick(String subcategoryText) {
-        // TODO --> NullPointerException atabılır handle et
-        WebElement subcategory = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(5);
         for (WebElement w : digitalContentDevicesSubHeadsList) {
@@ -132,7 +136,7 @@ public class CategoryPage {
         WebElement subcategory = null;
         // TODO --> change Explicit wait
         WebDriverUtils.wait(5);
-        for (WebElement w :amazonMusicSubLists) {
+        for (WebElement w : amazonMusicSubLists) {
             if (w.getText().equals(subcategoryText)) {
                 subcategory = w;
                 //TODO --> USE LOGGING
@@ -143,7 +147,41 @@ public class CategoryPage {
         return subcategory;
     }
 
+    // Kindle E-readers , Kindle Store , Apps & Resources
+    // The method of accessing the subheadings of Kindle E-readers & Books with text as a web element
+    public WebElement kindleEreadersBooksHeadings(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
+        WebElement subcategory = null;
+        // TODO --> change Explicit wait
+        WebDriverUtils.wait(5);
+        for (WebElement w : kindleEreadersBooksHeaders) {
+            if (w.getText().equals(subcategoryText)) {
+                subcategory = w;
+                //TODO --> USE LOGGING
+                System.out.println(w.getText());
+                break;
+            }
+        }
+        return subcategory;
+    }
 
+    public WebElement deneme(String header, String subcategry) {
+        // TODO --> NullPointerException atabılır handle et
+        WebElement subcategory = null;
+        for (WebElement w : kindleEreadersBooksHeaders) {
+            if (w.getText().equals(header)) {
+                for (WebElement z : kindleEreadersBooksSubcategories) {
+                    if (z.getText().equals(subcategry)) {
+                        subcategory = z;
+                        //TODO --> USE LOGGING
+                        System.out.println(z.getText());
+                        break;
+                    }
+                }
+            }
+        }
+        return subcategory;
+    }
 // ==========================================================================================================
 
     // Electronics , Computers , Smart Home , Arts & Crafts
