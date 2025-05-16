@@ -135,4 +135,14 @@ public class CategoryPageStepDefs {
     public void amazonMusicShouldBeDisplayed(String subcategories) {
         Assert.assertTrue(categoryPage.amazonMusicSubCategories(subcategories).isDisplayed());
     }
+
+    @Then("Kindle E-readers & Books {string} should be displayed")
+    public void kindleEReadersBooksShouldBeDisplayed(String subheader) {
+        Assert.assertTrue(categoryPage.kindleEreadersBooksHeadings(subheader).isDisplayed());
+    }
+
+    @Then("Kindle E-readers & Books {string} and {string} should be displayed")
+    public void kindleEReadersBooksAndShouldBeDisplayed(String subheader, String subcategory) {
+        Assert.assertTrue(categoryPage.deneme(subheader,subcategory).isDisplayed());
+    }
 }
