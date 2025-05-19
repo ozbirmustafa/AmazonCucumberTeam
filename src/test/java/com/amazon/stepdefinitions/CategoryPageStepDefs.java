@@ -95,7 +95,7 @@ public class CategoryPageStepDefs {
     @Then("Programs & Feature's See less button should displayed")
     public void programsFeatureSSeeLessButtonShouldDisplayed() {
         Assert.assertTrue(categoryPage.seeLessButtons(1).isDisplayed());
-    };
+    }
 
     @And("Click Programs & Feature's See all button")
     public void clickProgramsFeatureSSeeAllButton() {
@@ -144,5 +144,10 @@ public class CategoryPageStepDefs {
     @Then("Kindle E-readers & Books {string} and {string} should be displayed")
     public void kindleEReadersBooksAndShouldBeDisplayed(String subheader, String subcategory) {
         Assert.assertTrue(categoryPage.deneme(subheader,subcategory).isDisplayed());
+    }
+
+    @Then("Amazon Appstore {string} should be displayed")
+    public void amazonAppstoreShouldBeDisplayed(String subcategory) {
+        Assert.assertTrue(categoryPage.amazonAppstoreSubcategory(subcategory).isDisplayed());
     }
 }

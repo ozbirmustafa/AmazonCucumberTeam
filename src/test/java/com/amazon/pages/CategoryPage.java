@@ -57,6 +57,9 @@ public class CategoryPage {
     @FindBy(xpath = "//ul[@data-menu-id='4']//a[@class='hmenu-item']")
     public List<WebElement> kindleEreadersBooksSubcategories;
 
+    @FindBy(xpath = "//ul[@data-menu-id='5']//a[@class='hmenu-item']")
+    public List<WebElement> amazonAppstoreSubLists;
+
 
     // Digital Content & Devices , Shop by Department , Programs & Features , Help & Settings
     // The method of accessing the main menu headings with text as a web element
@@ -165,6 +168,10 @@ public class CategoryPage {
         return subcategory;
     }
 
+    // Meet the Kindle family , New Kindle , New Kindle Kids , All-new Kindle Paperwhite , All-new Kindle Paperwhite Kids , Introducing Kindle Colorsoft Signature Edition , New Kindle Scribe
+    // Kindle Books , Kindle Unlimited , Prime Reading
+    // Free Kindle Reading Apps , Kindle for Web , Manage Your Content and Devices , Trade-In
+    // The method of accessing the subcategories of  Kindle E-readers & Books with text as a web element
     public WebElement deneme(String header, String subcategry) {
         // TODO --> NullPointerException atabılır handle et
         WebElement subcategory = null;
@@ -178,6 +185,24 @@ public class CategoryPage {
                         break;
                     }
                 }
+            }
+        }
+        return subcategory;
+    }
+
+    // App store Home , Fire TV Apps & Subscriptions , Fire Tablet Apps , Search Apps , Manage Apps , Manage Subscriptions , Help
+    // The method of accessing the subcategories of Amazon Appstore with text as a web element
+    public WebElement amazonAppstoreSubcategory(String subcategoryText) {
+        // TODO --> NullPointerException atabılır handle et
+        WebElement subcategory = null;
+        // TODO --> change Explicit wait
+        WebDriverUtils.wait(5);
+        for (WebElement w : amazonAppstoreSubLists) {
+            if (w.getText().equals(subcategoryText)) {
+                subcategory = w;
+                //TODO --> USE LOGGING
+                System.out.println(w.getText());
+                break;
             }
         }
         return subcategory;
@@ -250,6 +275,7 @@ public class CategoryPage {
         for (int i = 0; i < seeAllButton.size(); i++) {
             if (i == index) {
                 w = seeAllButton.get(index);
+                break;
             }
         }
         return w;

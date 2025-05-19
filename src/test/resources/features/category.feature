@@ -130,7 +130,7 @@ Feature: Category Page
       | Kindle Store     |
       | Apps & Resources |
 
-  @c
+
   Scenario Outline: Verify that subcategories under 'Kindle E-readers & Books'
     Given Click All menu button
     When Click "Kindle E-readers & Books"
@@ -152,7 +152,18 @@ Feature: Category Page
       | Apps & Resources | Manage Your Content and Devices                |
       | Apps & Resources | Trade-In                                       |
 
-
-
+  @c
+  Scenario Outline: Verify that subcategories under 'Amazon Music'
+    Given Click All menu button
+    When Click "Amazon Appstore"
+    Then Amazon Appstore "<subcategories>" should be displayed
+    Examples:
+      | subcategories                |
+      | Fire TV Apps & Subscriptions |
+      | Fire Tablet Apps             |
+      | Search Apps                  |
+      | Manage Apps                  |
+      | Manage Subscriptions         |
+      | Help                         |
 
 

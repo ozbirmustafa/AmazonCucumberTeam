@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         glue = "com.amazon.stepdefinitions",
         monochrome = true,
         dryRun = false,
-        tags = ""
+        tags = "@c"
 )
 public class TestRunner {
 
